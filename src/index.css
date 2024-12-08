@@ -1,0 +1,152 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: sans-serif;
+  background-color: black;
+  color: #bdd1d4;
+  /*margin: 2rem;*/
+}
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Pushes left and right sections apart */
+  align-items: center; /* Vertically center items in the navbar */
+  padding: 10px 20px; /* Padding for the navbar */
+  /*background-color: #333;         /* Background color */
+  /*color: white;    */ /* Text color */
+}
+.navbar-right {
+  display: flex; /* Display links in a row */
+  gap: 15px; /* Space between the links */
+}
+header {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  /*we make display flex to container, if we want to align elements inside that container to some place*/
+  /*margin: 2rem;
+  margin: 2rem 0;*/
+  border-bottom: 3px solid #48d9f3;
+  border-top: 3px solid #48d9f3;
+  padding: 10px 20px;
+}
+.all-users {
+  margin: 10px;
+}
+.friends-list {
+  padding: 10px 20px;
+}
+button {
+  font: inherit;
+  font-size: 0.85rem;
+  background-color: #282f33;
+  border: none;
+  border-bottom-color: #48d9f3;
+  color: #e0eff1;
+  border-radius: 4px 4px 0 0;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+button:hover,
+button.active {
+  background-color: #48d9f3;
+  color: #273133;
+}
+.friend-card {
+  padding-bottom: 0px;
+}
+.friend-card-text {
+  padding: 10px 20px;
+}
+.friend-card-buttons {
+  display: flex;
+  justify-content: flex-start; /* Pushes left and right sections apart */
+  align-items: center; /* Vertically center items in the navbar */
+  padding: 5px 20px;
+  padding-bottom: 0px;
+}
+.friend-card-buttons-id {
+  min-width: 160px;
+  margin: 0 10px;
+  /*margin: 1px 10px;*/
+}
+.friend-card-buttons-id-showButton {
+  margin-right: 10px;
+  min-width: 160px;
+}
+/*
+#selection {
+  padding: 5px 20px;
+  display: flex;
+  width: 400px;
+  selection k andar friend-container h so, friend container m padding aayegi
+  //but, friend container toh empty h, 
+  //content inside friend container change ho rha h so this is reduntant
+  we have to make friend-container as flex
+}
+  */
+.friend-container {
+  background-color: #2d3942;
+  border-radius: 0 4px 4px 4px;
+  padding: 1rem;
+  display: flex;
+  /*width: 400px;*/
+  margin-left: 20px;
+  flex-direction: row;
+  gap: 10px;
+}
+.friends-card {
+  /*friends card and friend card are different f
+    friends card are inside showFriendsCss.jsx files*/
+  border: 2px solid white;
+  display: flex;
+  /*align-items: center;*/
+  flex-direction: column;
+  /*min-width: 300px;*/
+  /*max-width: 400px;*/
+  gap: 10px;
+  padding: 10px 20px;
+}
+.inside-friends-card {
+  /*It is a div inside array of friends element
+    friends:[ iske baad every id and comma is a div.. make it inline-block
+    inline block can have width and height and we can fix them
+    also margin and padding se, we can seperate them*/
+  display: inline-block;
+  margin-left: 2px;
+  /*margin-top: px;*/
+  /*with padding, div jiske andar id h, likha m padding 2px ki d di*/
+  padding-top: 2px;
+}
+.user-details {
+  background-color: #2d3942;
+  border-radius: 0 4px 4px 4px;
+  padding: 1rem;
+  /*display: flex;*/
+  /*width: 400px;*/
+  margin-left: 20px;
+  flex-direction: row;
+  gap: 10px;
+}
+.inside-user-details {
+  border: 2px solid white;
+  display: flex;
+  /*align-items: center;*/
+  flex-direction: column;
+  /*min-width: 300px;*/
+  /*max-width: 400px;*/
+  gap: 10px;
+  padding: 10px 20px;
+}
+.inside-user-details-friends-array {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}
+.user-detail-inline-block {
+  display: inline-block;
+}
