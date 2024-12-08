@@ -9,7 +9,20 @@ const FriendCard = ({
   onShowMutualFriends,
   onShowFriends,
   onShowDetails,
+  selectedUser,
+  currButtonSelected,
 }) => {
+  const isActive = selectedUser === friend._id;
+  /*
+{currButtonSelected === "userDetailsButton" &&
+                      userDetailObj && (
+                        <UserDetails userDetailObj={userDetailObj} />
+                      )}
+                    {currButtonSelected === "showFriendsButton" && arrayObj && (
+                      <ShowFriends friends={arrayObj} />
+                    )}
+                    {currButtonSelected === "showMutualFriendsButton" &&
+  */
   return (
     <div className="friend-card">
       <div className="friend-card-text">
@@ -17,19 +30,31 @@ const FriendCard = ({
       </div>
       <div className="friend-card-buttons">
         <button
-          className="friend-card-buttons-id-showButton"
+          className={`friend-card-buttons-id-showButton ${
+            isActive && currButtonSelected === "showFriendsButton"
+              ? "active"
+              : ""
+          }`}
           onClick={() => onShowFriends(friend._id)}
         >
           Show Friends
         </button>
         <button
-          className="friend-card-buttons-id"
+          className={`friend-card-buttons-id ${
+            isActive && currButtonSelected === "showMutualFriendsButton"
+              ? "active"
+              : ""
+          }`}
           onClick={() => onShowMutualFriends(friend._id)}
         >
           Show Mutual Friends
         </button>
         <button
-          className="friend-card-buttons-id"
+          className={`friend-card-buttons-id ${
+            isActive && currButtonSelected === "userDetailsButton"
+              ? "active"
+              : ""
+          }`}
           onClick={() => onShowDetails(friend._id)}
         >
           User Details
@@ -58,8 +83,9 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   const [selectedUser, setSelectedUser] = useState(null); // Store selected user
   const [currButtonSelected, setCurrButtonSelected] = useState(""); // Store currently selected button action
-  const [loadForFriend, setLoadForFriend] = useState("false");
+  //const [loadForFriend, setLoadForFriend] = useState("false");
   // Fetch friends from the backend
+  //const [isActive, setIsActive] = useState(false);
 
   const fetchFriends = async () => {
     setLoading(true);
@@ -251,7 +277,7 @@ const App = () => {
   };
   const handleAddFriend = async (currUserId) => {
     try {
-      const friendId = prompt("Enter friend user ID to delete:");
+      const friendId = prompt("Enter friend user ID to Add:");
       //we get friend Id as as argument to this
       //string return hoga and string inside string,
       //double string??
@@ -297,14 +323,17 @@ const App = () => {
         }
       `,
       };
-      await fetch(`http://localhost:8080/graphql`, {
+      const deletedornot = await fetch(`http://localhost:8080/graphql`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(graphqlQuery),
       });
-      alert("Friend deleted!");
+      if (deletedornot) {
+        //alert("Friend deleted!");
+      }
+
       setCurrButtonSelected("showDeleteFriendButton");
       fetchFriends(); // Reload friends list after deleting
     } catch (error) {
@@ -368,7 +397,7 @@ const App = () => {
       <h1 className="all-users">All Users!!</h1>
       <div className="friends-list">
         {friends.length === 0 ? (
-          <p>No Users available.</p>
+          <p className="when-no-user">No Users available.</p>
         ) : (
           friends.map((friend) => (
             <React.Fragment key={friend._id}>
@@ -380,6 +409,8 @@ const App = () => {
                 onDeleteFriend={handleDeleteFriend}
                 onShowMutualFriends={handleShowMutualFriends}
                 onShowDetails={handleShowDetails}
+                selectedUser={selectedUser}
+                currButtonSelected={currButtonSelected}
               />
               <div id="selecting">
                 {selectedUser && selectedUser === friend._id && (

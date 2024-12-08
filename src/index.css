@@ -34,7 +34,7 @@ header {
   padding: 10px 20px;
 }
 .all-users {
-  margin: 10px;
+  margin: 15px;
 }
 .friends-list {
   padding: 10px 20px;
@@ -56,6 +56,25 @@ button.active {
   background-color: #48d9f3;
   color: #273133;
 }
+/*Button .active is a class which is used for 
+  we have to assign class to the button whenEver by checking variable, 
+  whenever the button is click vrna active toh:active aise krte h
+  
+  .active is a class .'dot' to access by class name
+  and 
+   className={`friend-card-button-id ${isActive ? 'active' : ''}`}
+   isActive is a variable to give button the class as active if isActive value is true
+
+  we have to assign className="{
+  we before assigning the class as active we want the unique button
+  ..uniqueId ho 
+  jiss function k andar se hum isActive ko true karinge, usse 
+  showfriends, showMutualFriends inme se ek ho jayega active
+  but baakiyon m bhi toh hatega nhi..
+
+  and first, how to we get friend-card unique element how to identify..
+  It is identified by react I guess
+  */
 .friend-card {
   padding-bottom: 0px;
 }
@@ -98,6 +117,7 @@ button.active {
   margin-left: 20px;
   flex-direction: row;
   gap: 10px;
+  flex-wrap: wrap; /* Ensures items wrap to the next row */
 }
 .friends-card {
   /*friends card and friend card are different f
@@ -149,4 +169,16 @@ button.active {
 }
 .user-detail-inline-block {
   display: inline-block;
+}
+.when-no-user {
+  color: #82c2ce;
+}
+.all-users {
+  color: #82c2ce;
+  font-size: 25px;
+  padding: 10px;
+}
+.project-name {
+  font-size: 20px;
+  color: #48d9f3;
 }
